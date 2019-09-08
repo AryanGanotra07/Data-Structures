@@ -2,7 +2,7 @@
 
 int search(int *a, int size, int elem)
 {
-    int i
+    int i;
     for (i = 0; i < size; i++)
     {
         if (elem == *(a + i))
