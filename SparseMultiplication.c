@@ -1,17 +1,17 @@
-
 #include<stdio.h>
+
 
 
 void print(int k[3][100], int count){
     int i,j;
-    
+    //printf("%d",count);
     for(j=0 ;j<3;j++){
         for(i=0;i<count;i++){
             printf("%d ",k[j][i]);
         }
         printf("\n");
     }
-    
+    //printf("%d",count);
 }
 
 void swap(int *a, int *b){
@@ -147,7 +147,7 @@ int main(){
             }
         }
     }
-      transpose(k,count);
-      print(k,count);
+  
+      multiply(k,count,m,n);
 
 }
