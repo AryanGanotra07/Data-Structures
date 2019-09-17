@@ -55,7 +55,7 @@ int Length(struct Node *p){
 void insert(struct Node *h, int key, int pos){
     int i;
     struct Node *t = (struct Node*)malloc(sizeof(struct Node));
-    if(pos>=0 && pos<Length(h)){
+    if(pos>=0 && pos<=Length(h)){
     if(pos == 0){
         t->data=key;
         if(Head==NULL){
@@ -88,10 +88,48 @@ void insert(struct Node *h, int key, int pos){
 
 }
 
+int delete(struct Node* p, int pos){
+    int x=-1,i;
+    struct Node *q;
+    if(pos<0 || pos>Length(p)){
+        return -1;
+    }
+    else{
+        if(pos==1){
+            x=Head->data;
+            while(p->next!=Head){
+                p=p->next;
+            }
+            if(Head==p){
+                free(Head);
+                Head=NULL;
+            }
+            else{
+                p->next=Head->next;
+                free(Head);
+                Head=p->next;
+            }
+
+        }
+        else{
+            for(i=0;i<pos-2;i++){
+                p=p->next;
+            }
+            q=p->next;
+            x=q->data;
+            p->next=q->next;
+            free(q);
+
+        }
+        return x;
+    }
+}
+
 int main(){
     int A[]={0,1,2,3,4,5};
     create(A,6);
     insert(Head, 3, 0);
+   // delete(Head,1);
     Rdisplay(Head);
     return 0;
 }
