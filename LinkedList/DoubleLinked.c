@@ -68,10 +68,37 @@ void insert(struct Node *p, int key, int pos){
         }
 }
 
+int delete(struct Node *p, int pos){
+    int x=-1,i;
+    if(pos<1 && pos>Length(p)){
+        return -1;
+    }
+     if(pos==1){
+            first=p->next;
+            free(p);
+            if(first)first->prev=NULL;;
+
+
+        }
+        else{
+            for(i=0;i<pos-1;i++){
+                p=p->next;
+            }
+            x=p->data;
+            p->prev->next = p->next;
+           if(p->next) p->next->prev = p->prev;
+            free(p); 
+
+        }
+        return x;
+    
+}
+
 int main(){
     int a[]={0,1,2,3,4,5};
     create(a,6);
-    insert(first,2,2);
+   // insert(first,2,2);
+    delete(first,4);
     display(first);
     return 0;
 }
