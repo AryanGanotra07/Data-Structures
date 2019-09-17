@@ -313,18 +313,37 @@ void merge(struct Node*p, struct Node *q){
     else if(q) last->next = q;
 }
 
+int isLoop(struct Node *f){
+    struct Node *p,*q;
+    p=q=f;
+    do{
+        p=p->next;
+        q=q->next;
+        q=q?q->next:NULL;
+    }
+    while (p && q && p!=q);
+    return p==q?1:0;
+    
+}
+
 int main(){
-    int a[]={0,1,2,2,3,3,4,6,6};
+    struct Node *t1,*t2;
+    int a[]={0,1,2,2};
     int b[]={3,4,5,6,6,6};
-    create(a,9);
-    create2(b,6);
+    create(a,4);
+    t1=first->next;
+    t2=first->next->next->next;
+    t2->next=t1;
+
+   // create2(b,6);
     printf("\n");
    // reverseDisplay(first);
     printf("\n");
-    printf("%d",sum(first));
+    
+    //printf("%d",sum(first));
     printf("\n");
-    printf("%d",Rmax(first));
-    RLsearch(first,4);
+    //printf("%d",Rmax(first));
+   // RLsearch(first,4);
     //insert(first,4,10);
    // sortedInsert(first,5);
    // delete(first,3);
@@ -334,10 +353,12 @@ int main(){
    //reversePointers(first);
   // recReverse(NULL,first);
     printf("\n");
+    printf("%d",isLoop(first));
+
     
-    printf("Concatenated \n");
+   // printf("Concatenated \n");
    // concat(first,second);
-   merge(first,second);
-    display(third);
+  // merge(first,second);
+  //  display(third);
     return 0;
 }
