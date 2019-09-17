@@ -42,9 +42,56 @@ void Rdisplay(struct Node *h){
     flag=0;
 }
 
+int Length(struct Node *p){
+    int l=0;
+    do{
+        l++;
+        p=p->next;
+    }
+    while (p!=Head);
+    return l;    
+}
+
+void insert(struct Node *h, int key, int pos){
+    int i;
+    struct Node *t = (struct Node*)malloc(sizeof(struct Node));
+    if(pos>=0 && pos<Length(h)){
+    if(pos == 0){
+        t->data=key;
+        if(Head==NULL){
+            Head = t;
+            Head->next = Head;
+        }
+        else{
+            
+            while(h->next!=Head){
+                h=h->next;
+            }
+            t->next = Head;
+            h->next=t;
+            Head=t;
+
+        }
+    }
+    else{
+
+    for(i=0;i<pos-1;i++){
+        h=h->next;
+        }
+        t->data=key;
+        t->next=h->next;
+        h->next=t;
+        
+}
+
+    }
+
+}
+
 int main(){
     int A[]={0,1,2,3,4,5};
     create(A,6);
+    insert(Head, 3, 0);
     Rdisplay(Head);
     return 0;
 }
