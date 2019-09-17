@@ -4,7 +4,7 @@
 struct Node{
     int data;
     struct Node *next;
-}*first=NULL;
+}*first=NULL,*second=NULL,*third=NULL;
 
 void create(int a[],int n){
     struct Node *last,*t;
@@ -13,6 +13,22 @@ void create(int a[],int n){
     first->data=a[0];
     first->next=NULL;
     last = first;
+    for(i=1;i<n;i++){
+        t=(struct Node*)malloc(sizeof(struct Node));
+        t->data=a[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+
+}
+void create2(int a[],int n){
+    struct Node *last,*t;
+    int i;
+    second = (struct Node*)malloc(sizeof(struct Node));
+    second->data=a[0];
+    second->next=NULL;
+    last = second;
     for(i=1;i<n;i++){
         t=(struct Node*)malloc(sizeof(struct Node));
         t->data=a[i];
@@ -255,12 +271,21 @@ void recReverse(struct Node *q, struct Node *p){
     }
 
 }
+void concat(struct Node *p, struct Node *q){
+    third = p;
+    while(p->next!=NULL){
+        p=p->next;
+    }
+    p->next=q;
+}
 
 int main(){
     int a[]={0,1,2,2,3,3,4,6,6};
+    int b[]={3,4,5,6,2,6};
     create(a,9);
+    create2(b,6);
     printf("\n");
-    reverseDisplay(first);
+   // reverseDisplay(first);
     printf("\n");
     printf("%d",sum(first));
     printf("\n");
@@ -273,8 +298,11 @@ int main(){
    // printf("%d",checkSorted(first));
    // removedup(first);
    //reversePointers(first);
-   recReverse(NULL,first);
+  // recReverse(NULL,first);
     printf("\n");
-    display(first);
+    
+    printf("Concatenated \n");
+    concat(first,second);
+    display(third);
     return 0;
 }
