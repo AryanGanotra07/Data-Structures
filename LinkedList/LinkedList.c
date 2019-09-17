@@ -234,6 +234,17 @@ void reverseElem(struct Node *p){
 }
 }
 
+void reversePointers(struct Node *p){
+    struct Node *q=NULL,*r=NULL;
+    while(p!=NULL){
+        r=q;
+        q=p;
+        p=p->next;
+        q->next = r;
+    }
+    first=q;
+}
+
 int main(){
     int a[]={0,1,2,2,3,3,4,6,6};
     create(a,9);
@@ -250,7 +261,7 @@ int main(){
     printf("\n");
    // printf("%d",checkSorted(first));
    // removedup(first);
-   reverseElem(first);
+   reversePointers(first);
     printf("\n");
     display(first);
     return 0;
