@@ -219,6 +219,21 @@ void removedup(struct Node *p){
     }
 }
 
+void reverseElem(struct Node *p){
+    int a[20],i=0;
+    while(p!=NULL){
+        a[i]=p->data;
+        i++;
+        p=p->next;
+    }
+    p=first;
+    i--;
+    while(p!=NULL){
+        p->data=a[i--];
+        p=p->next;
+}
+}
+
 int main(){
     int a[]={0,1,2,2,3,3,4,6,6};
     create(a,9);
@@ -234,7 +249,8 @@ int main(){
    // delete(first,3);
     printf("\n");
    // printf("%d",checkSorted(first));
-    removedup(first);
+   // removedup(first);
+   reverseElem(first);
     printf("\n");
     display(first);
     return 0;
