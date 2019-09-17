@@ -32,9 +32,19 @@ void display(struct Node *h){
     printf("\n");
 }
 
+void Rdisplay(struct Node *h){
+    static int flag=0;
+    if(h!=Head || flag==0){
+        flag=1;
+        printf("%d",h->data);
+        Rdisplay(h->next);
+    }
+    flag=0;
+}
+
 int main(){
     int A[]={0,1,2,3,4,5};
     create(A,6);
-    display(Head);
+    Rdisplay(Head);
     return 0;
 }
