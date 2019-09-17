@@ -279,9 +279,43 @@ void concat(struct Node *p, struct Node *q){
     p->next=q;
 }
 
+void merge(struct Node*p, struct Node *q){
+    struct Node *last;
+    if(p->data<q->data){
+        third=last=p;
+        p=p->next;
+        third->next=NULL;
+    }
+    else{
+        third=last=q;
+        q=q->next;
+        third->next=NULL;
+    }
+    while(p && q){
+        if(p->data < q->data){
+            last->next=p;
+            last=p;
+            p=p->next;
+            last->next=NULL;
+            
+            }
+        else{
+            last->next=q;
+            last=q;
+            q=q->next;
+            last->next=NULL;
+            
+
+        }
+
+    }
+    if(p) last->next = p;
+    else if(q) last->next = q;
+}
+
 int main(){
     int a[]={0,1,2,2,3,3,4,6,6};
-    int b[]={3,4,5,6,2,6};
+    int b[]={3,4,5,6,6,6};
     create(a,9);
     create2(b,6);
     printf("\n");
@@ -302,7 +336,8 @@ int main(){
     printf("\n");
     
     printf("Concatenated \n");
-    concat(first,second);
+   // concat(first,second);
+   merge(first,second);
     display(third);
     return 0;
 }
