@@ -42,9 +42,36 @@ int Length(struct Node *p){
     return count;
 }
 
+void insert(struct Node *p, int key, int pos){
+    struct Node *t=(struct Node*)malloc(sizeof(struct Node));
+    int i;
+    if(pos<0 || pos>Length(p)) return;
+    if(pos==0){
+
+        t->prev=NULL;
+        t->data=key;
+        t->next=first;
+        first=t;
+
+    }
+    else{
+        for(i=0;i<pos-1;i++){
+            p=p->next;
+            }
+            t->data=key;
+            t->prev=p;
+            t->next=p->next;
+            if(p->next)
+            p->next->prev=t;
+            p->next=t;
+            
+        }
+}
+
 int main(){
     int a[]={0,1,2,3,4,5};
     create(a,6);
+    insert(first,2,2);
     display(first);
     return 0;
 }
