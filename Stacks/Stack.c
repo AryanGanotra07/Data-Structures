@@ -7,6 +7,13 @@ struct Stack{
     int a*;
 }
 
+void display(struct Stack s){
+    int i;
+    for(i=s.top;i>=0;i++){
+        printf("%d ",s.a[i]);
+    }
+}
+
 void push(struct Stack *s, int key){
     if(s->top==s->size){
         printf("Overflow condition");
