@@ -129,7 +129,7 @@ int main(){
     int A[]={0,1,2,3,4,5};
     create(A,6);
     insert(Head, 3, 0);
-   // delete(Head,1);
+   delete(Head,1);
     Rdisplay(Head);
     return 0;
 }
