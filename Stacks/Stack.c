@@ -17,6 +17,58 @@ void push(struct Stack *s, int key){
     }
 }
 
+int pop(struct Stack *p){
+    int x=-;
+    if(p->top==-1){
+        printf("Underflow condition");
+    }
+    else{
+        x=p->a[p->top];
+        p->top--;
+    }
+    return x;
+}
+
+int peek(struct Stack s, int pos){
+    int x=-1;
+    if(p->top==-1){
+        printf("Underflow condition");
+    }
+    else{
+        x=s.a[s.top-pos+1];
+    }
+    return x;
+}
+
+int stackTop(struct Stack s){
+    int x=-1;
+    if(p->top==-1){
+        printf("Underflow condition");
+    }
+    else{
+        x=s.a[s.top];
+    }
+}
+
+int isFull(struct Stack s){
+    if(s.top==s.size-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+
+}
+
+int isEmpty(struct Stack s){
+    if(s.top==-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
 int main(){
     struct Stack s;
     printf("Enter size of array");
