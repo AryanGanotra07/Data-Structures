@@ -181,6 +181,7 @@ struct Array* Union(struct Array *a1,struct Array *a2){
     int i=0,j=0,k=0;
     struct Array *a3;
     a3=(struct Array *)malloc(sizeof(struct Array));
+    a3->size = a1->size + a2 -> size;
     
     a3->A=(int *)malloc(a3->size*sizeof(int));
     while(i<a1->length && j<a2->length){
@@ -207,7 +208,7 @@ struct Array* Union(struct Array *a1,struct Array *a2){
     for(;j<a2->length;j++){
         a3->A[k++]=a2->A[j];
     }
-    a3->size = a1->size + a2 -> size;
+    
     a3->length = k;
     return a3;
 }
