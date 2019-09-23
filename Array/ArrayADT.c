@@ -280,16 +280,17 @@ struct Array* Merge(struct Array *a1,struct Array *a2){
     a3->length = a1->length + a2->length;
     a3->A=(int *)malloc(a3->size*sizeof(int));
     while(i<a1->length && j<a2->length){
-        if(a1->A[i]<a2->A[j]){
+        if(a1->A[i]<=a2->A[j]){
             a3->A[k]=a1->A[i];
             i++;
             k++;
             }
-        else if(a1->A[i]>a2->A[j]){
+        if(a1->A[i]>=a2->A[j]){
             a3->A[k] = a2->A[j];
             j++;
             k++;
         }
+        
     }
     for(;i<a1->length;i++){
         a3->A[k++]=a1->A[i];
