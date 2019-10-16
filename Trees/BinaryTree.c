@@ -76,6 +76,15 @@ void Postorder(struct Node *p)
     }
 }
 
+void LevelOrder(struct Node *root)
+{
+    struct Queue q;
+    create(&q, 100);
+    printf("%d ",root->data);
+    enqueue(&q, root);
+    while()
+}
+
 int main()
 {
     Treecreate();
