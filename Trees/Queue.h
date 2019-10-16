@@ -52,5 +52,5 @@ int isEmpty(struct Queue q)
 
 int isFull(struct Queue q)
 {
-    return (q->rear+1)%q->size == q->front;
+    return (q.rear+1)%q.size == q.front;
 }
