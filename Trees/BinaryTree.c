@@ -82,12 +82,25 @@ void LevelOrder(struct Node *root)
     create(&q, 100);
     printf("%d ",root->data);
     enqueue(&q, root);
-    while()
+    while(!isEmpty)
+    {
+        root = dequeue(&q);
+        if(root->lchild)
+        {
+            printf("%d",root->lchild->data);
+            enqueue(&q,root->lchild);
+        }
+        if(root->rchild)
+        {
+            printf("%d ",root->rchild->data);
+            enqueue(&q, root->rchild);
+        }
+    }
 }
 
 int main()
 {
     Treecreate();
-    Preoder(root);
+    LevelOrder(root);
     
 }
