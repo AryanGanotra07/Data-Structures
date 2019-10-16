@@ -9,7 +9,7 @@ void Treecreate()
     struct Node *p, *t;
     int x;
     struct Queue q;
-    create(&q, 100);
+    create(&q, 10);
 
     printf("Enter root value");
     scanf("%d",&x);
@@ -18,7 +18,7 @@ void Treecreate()
     root->lchild = root->rchild = NULL;
     enqueue(&q, root);
 
-    while(!isEmpty(q))
+    while(!isEmpty(q) && !isFull(q))
     {
         p = dequeue(&q);
         printf("Enter left child of %d",p->data);
@@ -56,4 +56,29 @@ void Preoder(struct Node *p)
 
 }
 
-void Inorder(struct)
+void Inorder(struct Node *p)
+{
+    if(p)
+    {
+        Inorder(p->lchild);
+        printf("%d",p->data);
+        Inorder(p->rchild);
+    }
+}
+
+void Postorder(struct Node *p)
+{
+    if(p)
+    {
+        Postorder(p->lchild);
+        Postorder(p->rchild);
+        printf("%d",p->data);
+    }
+}
+
+int main()
+{
+    Treecreate();
+    Preoder(root);
+    
+}
