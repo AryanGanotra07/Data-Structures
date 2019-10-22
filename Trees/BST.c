@@ -37,3 +37,19 @@ void insert(int key)
     else r->rchild = p;
     
 }
+
+void inorder(struct Node *p)
+{
+    if(p)
+    {
+        inorder(p->lchild);
+        printf("%d ",p->data);
+        inorder(p->rchild);
+    }
+}
+
+int main()
+{
+    
+    return 0;
+}
