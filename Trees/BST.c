@@ -39,6 +39,27 @@ void insert(int key)
     
 }
 
+struct Node * search(int key)
+{
+    struct Node *t = root;
+    while(t != NULL)
+    {
+        if(t->data = key)
+        {
+            return t;
+        }
+        else if(key < t->data)
+        {
+            t = t->lchild;
+        }
+        else
+        {
+            t = t->rchild;
+        }
+    }
+    return NULL;
+}
+
 void inorder(struct Node *p)
 {
     if(p)
@@ -51,6 +72,12 @@ void inorder(struct Node *p)
 
 int main()
 {
-
+    insert(50);
+    insert(20);
+    insert(60);
+    insert(10);
+    insert(5);
+    insert(100);
+    inorder(root);
     return 0;
 }
