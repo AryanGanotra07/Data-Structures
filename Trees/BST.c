@@ -18,6 +18,7 @@ void insert(int key)
         p = (struct Node *)malloc(sizeof(struct Node));
         p -> lchild = p -> rchild = NULL;
         p -> data = key;
+        root = p;
         return;
     } 
     while (t != NULL) 
@@ -50,6 +51,6 @@ void inorder(struct Node *p)
 
 int main()
 {
-    
+
     return 0;
 }
