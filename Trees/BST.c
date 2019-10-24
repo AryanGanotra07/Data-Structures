@@ -60,6 +60,49 @@ struct Node * RInsert(struct Node *p, int key)
     
 }
 
+struct Node * Delete(struct Node *p, int key)
+{
+    struct Node *q;
+     if(p==NULL)
+        {
+            return NULL;
+        }
+        if(p->lchild == NULL && p->rchild == NULL)
+        {
+            if(p==root) root = NULL;
+            free(p);
+            return NULL;
+        }
+
+    if(key<p->data)
+    {
+        p->lchild = Delete(p->lchild, key);
+    }
+    else if(key>p->data)
+    {
+        p->rchild = Delete(p->rchild, key);
+    }
+    else{
+        if(Height(p->lchild)>Height(p->rchild))
+        {
+            q = InPre(p->lchild);
+            p->data = q->data;
+            p->lchild = Delete(p->lchild, q->data);
+        }
+        else
+        {
+            q = InSucc(p->rchild);
+            p->data = q->data;
+            p->rchild = Delete(q->rchild, q->data);
+        }
+    }
+}
+
+int Height(struct Node *p)
+{
+
+}
+
 struct Node * search(int key)
 {
     struct Node *t = root;
