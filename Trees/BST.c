@@ -100,7 +100,29 @@ struct Node * Delete(struct Node *p, int key)
 
 int Height(struct Node *p)
 {
+    int x,y;
+    if(p==NULL)return 0;
+    x = Height(p->lchild);
+    y = Height(p->rchild);
+    return x>y?x+1:y+1;
+}
 
+struct Node *InPre(struct Node *p)
+{
+    while(p && p->rchild)
+    {
+        p = p->rchild;
+    }
+    return p;
+}
+
+struct Node *InSucc(struct Node *p)
+{
+    while(p && p->lchild)
+    {
+        p = p->lchild;
+    }
+    return p;
 }
 
 struct Node * search(int key)
