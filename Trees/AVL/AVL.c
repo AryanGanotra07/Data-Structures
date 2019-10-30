@@ -14,6 +14,14 @@ int NodeHeight(struct Node *p)
 
 }
 
+int BalanceFactor(struct Node *p)
+{
+    int hl, hr;
+    hl = p && p->lchild?p->lchild->height:0;
+    hr = p && p->rchild?p->rchild->height:0;
+    return hl-hr;
+}
+
 
 struct Node * RInsert(struct Node *p, int key)
 {
