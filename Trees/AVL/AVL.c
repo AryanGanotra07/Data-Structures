@@ -1,3 +1,6 @@
+#include<stdio.h>
+#include<stdlib.h>
+
 struct Node {
     struct Node *lchild;
     struct Node *rchild;
@@ -21,6 +24,40 @@ int BalanceFactor(struct Node *p)
     hr = p && p->rchild?p->rchild->height:0;
     return hl-hr;
 }
+
+struct Node * LLRotation(struct Node *p)
+{
+    struct Node *pl= p->lchild;
+    struct Node *plr = pl->rchild;
+
+    pl->rchild = p;
+    p->lchild = plr;
+    p->height = NodeHeight(p);
+    pl->height = NodeHeight(pl);
+
+    if(root==p)
+    {
+        root = pl;
+    }
+    return pl;
+}
+
+struct Node * RRRotation(struct Node *p)
+{
+    return NULL;
+}
+
+struct Node * LRRotation(struct Node *p)
+{
+    return NULL;
+}
+
+
+struct Node * RLRotation(struct Node *p)
+{
+    return NULL;
+}
+
 
 
 struct Node * RInsert(struct Node *p, int key)
@@ -66,5 +103,10 @@ struct Node * RInsert(struct Node *p, int key)
 
 int main()
 {
+
+    root = RInsert(root,10);
+    RInsert(root, 5);
+    RInsert(root, 2);
+    printf("%d",root->data);
     return 0;
 }
