@@ -43,6 +43,23 @@ struct Node * RInsert(struct Node *p, int key)
         p->rchild = RInsert(p->rchild, key);
     }
     p -> height = NodeHeight(p);
+
+    if(BalanceFactor(p)==2 && BalanceFactor(p->lchild)==1)
+    {
+        return LLRotation(p);
+    }
+    else if(BalanceFactor(p)==2 && BalanceFactor(p->lchild)==-1)
+    {
+        return LRRotation(p);
+    }
+    else if(BalanceFactor(p)==-2 && BalanceFactor(p->lchild)==-1)
+    {
+        return RRRotation(p);
+    }
+    else if(BalanceFactor(p)==-2 && BalanceFactor(p->lchild)==1)
+    {
+        return RLRotation(p);
+    }
     return p;
     
 }
