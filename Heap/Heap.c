@@ -49,16 +49,16 @@ int delete(int A[], int n)
 
 int main()
 {
-    int A[] = {0,1,3,2,4,5,6,10}; 
+    int A[] = {0,10,2,3,1,7,9,4,8,5,6}; 
     int n, i;
     A[0] = 0;
     
-    for(i=2;i<=7;i++)
+    for(i=2;i<=10;i++)
     {
         insert(A,i);
     }
 
-    for(i=1;i<=7;i++)
+    for(i=1;i<=10;i++)
     {
         printf("%d ",A[i]);
     }
@@ -66,12 +66,12 @@ int main()
 
     
 
-    for(i=7;i>1;i--)
+    for(i=10;i>=1;i--)
     {
         delete(A,i);
     }
 
-      for(i=1;i<=7;i++)
+      for(i=1;i<=10;i++)
     {
         printf("%d ",A[i]);
     }
